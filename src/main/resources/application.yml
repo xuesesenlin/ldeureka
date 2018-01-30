@@ -8,7 +8,7 @@ security:
     password: wangzheshengcun
 #端口号，默认eureka的端口为8761,实际上也是自带tomcat的端口号
 server:
-  port: 9111
+  port: 9001
 #服务注册地址
 eureka:
   instance:
