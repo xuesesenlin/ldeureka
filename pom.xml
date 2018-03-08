@@ -8,7 +8,7 @@
     <packaging>jar</packaging>
 
     <name>eureka</name>
-    <url>http://localhost:9111</url>
+    <url>http://localhost:9001</url>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
