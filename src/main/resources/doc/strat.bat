@@ -1,0 +1,1 @@
+start javaw -jar ../../../../target/ldeureka.jar
