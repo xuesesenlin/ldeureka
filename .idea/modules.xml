@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/eureka.iml" filepath="$PROJECT_DIR$/eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ldeureka.iml" filepath="$PROJECT_DIR$/ldeureka.iml" />
     </modules>
   </component>
 </project>

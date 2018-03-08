@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.ld.com</groupId>
-    <artifactId>eureka</artifactId>
+    <artifactId>ldeureka</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>eureka</name>
+    <name>ldeureka</name>
     <url>http://localhost:9001</url>
 
     <parent>
