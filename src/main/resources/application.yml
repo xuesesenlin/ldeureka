@@ -9,6 +9,8 @@ security:
 #端口号，默认eureka的端口为8761,实际上也是自带tomcat的端口号
 server:
   port: 9001
+  tomcat:
+    uri-encoding: UTF-8
 #服务注册地址
 eureka:
   instance:
@@ -27,3 +29,23 @@ eureka:
   #    开启ip注册
   preferIpAddress: true
   instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+
+spring:
+  #邮箱
+  mail:
+    host: smtp.qq.com
+    username: 287656156@qq.com
+    password: capvszpolemibgdc
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+#            指定编码
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
