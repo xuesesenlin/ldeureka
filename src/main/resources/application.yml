@@ -49,3 +49,10 @@ spring:
       force: true
       charset: UTF-8
       enabled: true
+
+logging:
+  file: eureka.log
+  level:
+    org:
+      ld:
+        com: debug
