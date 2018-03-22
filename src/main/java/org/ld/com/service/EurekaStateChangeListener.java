@@ -2,6 +2,8 @@ package org.ld.com.service;
 
 import com.netflix.appinfo.InstanceInfo;
 import org.ld.com.util.EmailUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.netflix.eureka.server.event.*;
@@ -17,6 +19,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class EurekaStateChangeListener {
+
+    private final static Logger logger = LoggerFactory
+            .getLogger(EurekaStateChangeListener.class);
 
     @Value("${spring.mail.username}")
     private String forEmail;
@@ -36,6 +41,10 @@ public class EurekaStateChangeListener {
         String serverId = eurekaInstanceCanceledEvent.getServerId();
         System.out.println(appName);
         System.out.println(serverId);
+        String s = "<span style=\"color:red;\">服务断开[{名称," + eurekaInstanceCanceledEvent.getAppName()+"]</span>";
+        EmailUtil emailUtil = new EmailUtil();
+        emailUtil.email(mailSender, forEmail, forEmail, s);
+        logger.info(s);
     }
 
     /**
@@ -46,7 +55,10 @@ public class EurekaStateChangeListener {
     @EventListener
     public void listen(EurekaInstanceRegisteredEvent event) {
         InstanceInfo instanceInfo = event.getInstanceInfo();
-        System.out.println(instanceInfo);
+        String s = "新服务注册成功[{名称," + instanceInfo.getAppName() + "},{ip地址," + instanceInfo.getIPAddr() + "},{端口,}" + instanceInfo.getPort() + "]";
+        EmailUtil emailUtil = new EmailUtil();
+        emailUtil.email(mailSender, forEmail, forEmail, s);
+        logger.info(s);
     }
 
     /**
@@ -56,8 +68,10 @@ public class EurekaStateChangeListener {
      */
     @EventListener
     public void listen(EurekaInstanceRenewedEvent event) {
-        event.getAppName();
-        event.getServerId();
+        String s = "服务更新成功[{名称," + event.getInstanceInfo().getAppName() + "},{ip地址," + event.getInstanceInfo().getIPAddr() + "},{端口,}" + event.getInstanceInfo().getPort() + "]";
+        EmailUtil emailUtil = new EmailUtil();
+//        emailUtil.email(mailSender, forEmail, forEmail, s);
+        logger.info(s);
     }
 
     /**
@@ -80,5 +94,6 @@ public class EurekaStateChangeListener {
         //Server启动
         EmailUtil emailUtil = new EmailUtil();
         emailUtil.email(mailSender, forEmail, forEmail, "服务注册中心开始启动");
+        logger.info("服务注册中心启动成功");
     }
 }
