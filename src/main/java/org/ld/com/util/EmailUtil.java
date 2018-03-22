@@ -34,6 +34,7 @@ public class EmailUtil {
             logger.info("邮件发送成功[{参数},{formUser," + formUser + "},{toUser," + toUser + "},{str," + str + "}]");
             return true;
         } catch (Exception ex) {
+            logger.info("邮件发送失败[{参数},{formUser," + formUser + "},{toUser," + toUser + "},{str," + str + "}]", ex);
             return false;
         }
     }
