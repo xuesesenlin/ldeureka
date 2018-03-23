@@ -41,7 +41,7 @@ public class EurekaStateChangeListener {
         String serverId = eurekaInstanceCanceledEvent.getServerId();
         System.out.println(appName);
         System.out.println(serverId);
-        String s = "<span style=\"color:red;\">服务断开[{名称," + eurekaInstanceCanceledEvent.getAppName()+"]</span>";
+        String s = "<span style=\"color:red;\">服务断开[{名称," + eurekaInstanceCanceledEvent.getAppName() + "]</span>";
         EmailUtil emailUtil = new EmailUtil();
         emailUtil.email(mailSender, forEmail, forEmail, s);
         logger.info(s);
@@ -68,10 +68,10 @@ public class EurekaStateChangeListener {
      */
     @EventListener
     public void listen(EurekaInstanceRenewedEvent event) {
-        String s = "服务更新成功[{名称," + event.getInstanceInfo().getAppName() + "},{ip地址," + event.getInstanceInfo().getIPAddr() + "},{端口,}" + event.getInstanceInfo().getPort() + "]";
-        EmailUtil emailUtil = new EmailUtil();
-//        emailUtil.email(mailSender, forEmail, forEmail, s);
-        logger.info(s);
+//        String s = "服务更新成功[{名称," + event.getInstanceInfo().getAppName() + "},{ip地址," + event.getInstanceInfo().getIPAddr() + "},{端口,}" + event.getInstanceInfo().getPort() + "]";
+//        EmailUtil emailUtil = new EmailUtil();
+////        emailUtil.email(mailSender, forEmail, forEmail, s);
+//        logger.info(s);
     }
 
     /**
